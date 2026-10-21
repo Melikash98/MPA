@@ -5,8 +5,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -24,6 +27,18 @@ public class SplashActivity extends AppCompatActivity {
     private ImageView img, bgImg, logoText;
     private MediaPlayer effectPlayer;
     private AnimatorSet splashSequence;
+    private static final long SPLASH_DURATION_MS = 5000L;
+    private final Handler handler = new Handler(Looper.getMainLooper());
+
+    private boolean animationFinished = false;
+    private boolean timeFinished = false;
+    private boolean navigated = false;
+
+    private final Runnable splashTimer = () -> {
+        timeFinished = true;
+        openNextActivityIfReady();
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +49,11 @@ public class SplashActivity extends AppCompatActivity {
         bgImg = findViewById(R.id.bgImg);
         logoText = findViewById(R.id.logoText);
         effectPlayer = MediaPlayer.create(this, R.raw.mixkit_magic_sparkle_whoosh_2350);
+
+        effectPlayer = MediaPlayer.create(
+                this,
+                R.raw.mixkit_magic_sparkle_whoosh_2350
+        );
 
         if (effectPlayer != null) {
             effectPlayer.setVolume(0.75f, 0.75f);
@@ -100,11 +120,7 @@ public class SplashActivity extends AppCompatActivity {
                 imgScaleY,
                 imgMove
         );
-
-        long imgDuration = 1000L;
-        long textDuration = 850L;
-
-        imgAnimation.setDuration(imgDuration);
+        imgAnimation.setDuration(1000L);
 
         imgAnimation.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -138,8 +154,7 @@ public class SplashActivity extends AppCompatActivity {
                 textScaleX,
                 textScaleY
         );
-
-        textAnimation.setDuration(textDuration);
+        textAnimation.setDuration(850L);
         textAnimation.setInterpolator(
                 new DecelerateInterpolator(2f)
         );
@@ -153,7 +168,7 @@ public class SplashActivity extends AppCompatActivity {
 
         long pauseDuration = Math.max(
                 0L,
-                soundDuration - imgDuration - textDuration
+                soundDuration - 1000L - 850L
         );
 
         ValueAnimator pauseBeforeText = ValueAnimator.ofFloat(0f, 1f);
@@ -168,11 +183,37 @@ public class SplashActivity extends AppCompatActivity {
                 textAnimation
         );
 
+        splashSequence.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animationFinished = true;
+                openNextActivityIfReady();
+            }
+        });
+
+        handler.postDelayed(splashTimer, SPLASH_DURATION_MS);
         splashSequence.start();
+    }
+
+    private void openNextActivityIfReady() {
+        if (!timeFinished || !animationFinished || navigated
+                || isFinishing() || isDestroyed()) {
+            return;
+        }
+
+        navigated = true;
+        handler.removeCallbacks(splashTimer);
+
+        Intent intent = new Intent(SplashActivity.this,HomeActivity.class);
+
+        startActivity(intent);
+        finish();
     }
 
     @Override
     protected void onDestroy() {
+        handler.removeCallbacks(splashTimer);
+
         if (splashSequence != null) {
             splashSequence.cancel();
         }
