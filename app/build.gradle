@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     id 'com.google.gms.google-services'
+    id  'com.google.firebase.crashlytics'
+    id("com.google.firebase.firebase-perf")
 }
 
 android {
@@ -41,4 +43,18 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:35.0.2')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics:21.0.0'
+    implementation 'com.google.firebase:firebase-analytics:24.0.0'
+    implementation 'com.google.firebase:firebase-auth:25.0.0'
+    implementation 'androidx.credentials:credentials:1.6.0'
+    implementation 'androidx.credentials:credentials-play-services-auth:1.6.0'
+    implementation 'com.google.android.libraries.identity.googleid:googleid:1.2.1'
+    implementation 'com.google.firebase:firebase-database:23.0.0'
+    implementation 'com.google.firebase:firebase-firestore:27.0.1'
+    implementation 'com.google.firebase:firebase-ai:18.0.0'
+    implementation("com.google.firebase:firebase-perf")
+
+
+    implementation 'com.github.Melikash98:Editify:v1.7.0'
+    implementation 'com.github.Melikash98:MorphNavBar:v2.2.9'
 }
