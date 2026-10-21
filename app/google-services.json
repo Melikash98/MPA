@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "318296087904",
+    "firebase_url": "https://portfolio-f66fb-default-rtdb.firebaseio.com",
+    "project_id": "portfolio-f66fb",
+    "storage_bucket": "portfolio-f66fb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318296087904:android:ac791db2aa56850d085205",
+        "android_client_info": {
+          "package_name": "com.melikash98.mpa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtpADMk2GFaLADP_WpNcIApUNnZJlqS8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
