@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     id 'com.google.gms.google-services'
-    id  'com.google.firebase.crashlytics'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.appdistribution'
     id("com.google.firebase.firebase-perf")
 }
 
@@ -53,6 +54,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:27.0.1'
     implementation 'com.google.firebase:firebase-ai:18.0.0'
     implementation("com.google.firebase:firebase-perf")
+    implementation 'com.google.firebase:firebase-messaging:26.0.0'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:23.0.0'
+    implementation 'com.google.android.gms:play-services-ads:25.5.0'
+    implementation 'com.google.firebase:firebase-config:24.0.0'
+    implementation 'com.google.firebase:firebase-perf:23.0.1'
+    implementation 'com.google.firebase:firebase-functions:23.0.0'
 
 
     implementation 'com.github.Melikash98:Editify:v1.7.0'
