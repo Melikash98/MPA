@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="portfolio_paper">#F8F3ED</color>
+    <color name="portfolio_blush">#F6DCD7</color>
+    <color name="portfolio_sage">#A6B3A0</color>
+    <color name="portfolio_teal">#0B4148</color>
+    <color name="portfolio_ink">#10343D</color>
+    <color name="portfolio_card">#FFF9F3</color>
+    <color name="portfolio_chip">#EEE8E0</color>
 </resources>
