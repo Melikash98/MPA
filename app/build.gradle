@@ -66,4 +66,6 @@ dependencies {
 
     implementation 'com.github.Melikash98:Editify:v1.7.0'
     implementation 'com.github.Melikash98:MorphNavBar:v2.2.9'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

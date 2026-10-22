@@ -5,6 +5,94 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     tools:context=".HomeActivity">
+
+    <ImageView
+        android:id="@+id/iconSun"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/brightness"
+        app:layout_constraintBottom_toBottomOf="@id/msText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/msText" />
+
+    <TextView
+        android:id="@+id/msText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/ms_font"
+        android:text="@string/name_admin"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textDirection="ltr"
+        android:textSize="42sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iconSun">
+
+        <ImageView
+            android:id="@+id/bg"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/bg_profile_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="105dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/profile_img"
+            app:civ_border_color="@color/portfolio_teal"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="@id/bg"
+            app:layout_constraintStart_toStartOf="@id/bg"
+            app:layout_constraintTop_toTopOf="@id/bg" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.melikash98.morphnavbar.MorphNavBar
+        android:id="@+id/morphNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lbv_activeIconColor="@android:color/white"
+        app:lbv_animationDuration="1400"
+        app:lbv_badgeBackgroundColor="@android:color/holo_red_light"
+        app:lbv_badgeTextColor="@android:color/white"
+        app:lbv_badgeTextSize="11sp"
+        app:lbv_barBottomMargin="0dp"
+        app:lbv_barColor="@android:color/white"
+        app:lbv_barHeight="100dp"
+        app:lbv_barRadius="26dp"
+        app:lbv_barSideMargin="0dp"
+        app:lbv_inactiveIconColor="#00CFC0"
+        app:lbv_itemIconSize="34dp"
+        app:lbv_labelFontFamily="sans-serif"
+        app:lbv_labelTextSize="14sp"
+        app:lbv_selectedColor="#00CFC0"
+        app:lbv_shadowBlur="12dp"
+        app:lbv_shadowColor="#22000000"
+        app:lbv_shadowDy="4dp"
+        app:lbv_showLabelOnlyOnSelected="false"
+        app:lbv_showLabels="true"
+        app:lbv_unselectedColor="#00CFC0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
