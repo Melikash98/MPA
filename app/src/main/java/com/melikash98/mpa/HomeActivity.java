@@ -19,19 +19,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
-        findById();
 
 
-        navBar.setTabs(
-                new MorphNavTabItem.Model("Home", R.drawable.house),
-                new MorphNavTabItem.Model("Resume", R.drawable.cv),
-                new MorphNavTabItem.Model("Projects", R.drawable.diagram)
-        );
-        navBar.setSelectedIndex(1);
 
     }
 
-    private void findById() {
-        navBar = findViewById(R.id.morphNavBar);
-    }
+
 }
