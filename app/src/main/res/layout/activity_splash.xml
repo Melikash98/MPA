@@ -5,150 +5,214 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
-    android:background="@color/ic_launcher_background">
+    android:background="@color/ic_launcher_background"
+    tools:context=".SplashActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="700dp"
             android:background="@drawable/bg_splash_circle"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/star_one"
             android:layout_width="15dp"
             android:layout_height="15dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginEnd="-150dp"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintEnd_toStartOf="@id/logoImg"
-            android:layout_marginEnd="-150dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="250dp"
-           />
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/star_foure"
             android:layout_width="10dp"
             android:layout_height="10dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="-250dp"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintEnd_toStartOf="@id/logoImg"
-            android:layout_marginEnd="-250dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="150dp"
-            />
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/star_two"
             android:layout_width="15dp"
             android:layout_height="15dp"
+            android:layout_marginStart="-150dp"
+            android:layout_marginTop="150dp"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            android:layout_marginStart="-150dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="150dp"/>
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/star_three"
             android:layout_width="10dp"
             android:layout_height="10dp"
+            android:layout_marginStart="-150dp"
+            android:layout_marginTop="260dp"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            android:layout_marginStart="-150dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="260dp"/>
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/star_five"
             android:layout_width="10dp"
             android:layout_height="10dp"
+            android:layout_marginStart="-350dp"
+            android:layout_marginTop="450dp"
+            android:alpha="0.4"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            android:layout_marginStart="-350dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="450dp"
-            android:alpha="0.4"/>
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/star_sex"
             android:layout_width="10dp"
             android:layout_height="10dp"
+            android:layout_marginStart="-450dp"
+            android:layout_marginTop="430dp"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            android:layout_marginStart="-450dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="430dp"/>
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/star_seven"
             android:layout_width="10dp"
             android:layout_height="10dp"
+            android:layout_marginStart="-150dp"
+            android:layout_marginTop="400dp"
+            android:backgroundTint="@color/gold"
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
-            android:backgroundTint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            android:layout_marginStart="-150dp"
-            app:layout_constraintTop_toTopOf="@id/logoImg"
-            android:layout_marginTop="400dp"/>
+            app:layout_constraintTop_toTopOf="@id/logoImg" />
+
         <ImageView
             android:id="@+id/logoImg"
             android:layout_width="550dp"
             android:layout_height="550dp"
             android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_splash"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_splash"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/logoText"
             android:layout_width="300dp"
             android:layout_height="200dp"
+            android:layout_marginTop="-220dp"
             android:src="@drawable/logo_signature"
-            app:layout_constraintStart_toStartOf="@id/logoImg"
             app:layout_constraintEnd_toEndOf="@id/logoImg"
-            app:layout_constraintTop_toBottomOf="@id/logoImg"
-            android:layout_marginTop="-220dp"/>
+            app:layout_constraintStart_toStartOf="@id/logoImg"
+            app:layout_constraintTop_toBottomOf="@id/logoImg" />
 
         <TextView
+            android:id="@+id/text_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text_one"
-            app:layout_constraintTop_toBottomOf="@id/logoText"
-            app:layout_constraintStart_toStartOf="@id/logoText"
-            app:layout_constraintEnd_toEndOf="@id/logoText"
-            android:text="@string/text_splash"
-            android:textColor="@color/gold"
             android:layout_marginTop="-50dp"
             android:fontFamily="@font/inter_bold"
+            android:letterSpacing=".2"
+            android:text="@string/text_splash"
+            android:textColor="@color/gold"
             android:textSize="16sp"
-            android:letterSpacing=".2"/>
+            app:layout_constraintEnd_toEndOf="@id/logoText"
+            app:layout_constraintStart_toStartOf="@id/logoText"
+            app:layout_constraintTop_toBottomOf="@id/logoText" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/text_one"
-            app:layout_constraintEnd_toEndOf="@id/text_one"
-            app:layout_constraintTop_toBottomOf="@id/text_one"
-            android:text="@string/text_splash_two"
-            android:textSize="12sp"
-            android:textColor="@color/gray"
-            android:alpha="0.5"
             android:layout_marginTop="10dp"
+            android:alpha="0.5"
             android:fontFamily="@font/inter_bold"
-            android:textFontWeight="500"/>
+            android:text="@string/text_splash_two"
+            android:textColor="@color/gray"
+            android:textFontWeight="500"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/text_one"
+            app:layout_constraintStart_toStartOf="@id/text_one"
+            app:layout_constraintTop_toBottomOf="@id/text_one" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@id/text_splash_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/dot"
+            android:backgroundTint="@color/gold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/dot"
+            android:backgroundTint="#2A3350"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dot1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/dot"
+            android:backgroundTint="#2A3350"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/dot2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/text_splash_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:alpha="0.3"
+        android:text="@string/web_address"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
