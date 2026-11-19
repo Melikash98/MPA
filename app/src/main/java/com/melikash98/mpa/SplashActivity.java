@@ -45,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
             ticks++;
 
             if (ticks >= TOTAL_TICKS) {
-                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                startActivity(new Intent(SplashActivity.this, EntryActivity.class));
                 finish();
             } else {
                 handler.postDelayed(this, STEP_DELAY);
