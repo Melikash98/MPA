@@ -53,13 +53,13 @@ public class EntryActivity extends AppCompatActivity {
 
     private void loadingPages() {
         onboardingPageList = new ArrayList<>();
-        onboardingPageList.add(new OnboardingPage(R.drawable.img_project_edu,
+        onboardingPageList.add(new OnboardingPage(R.drawable.img_entry_one,
                 "Work that", "speaks for itself",
                 "Browse real apps and systems built with Java, Spring Boot and Android. Tap any project to see the story behind it."));
-        onboardingPageList.add(new OnboardingPage(R.drawable.img_project_brewbite,
+        onboardingPageList.add(new OnboardingPage(R.drawable.img_entry_two,
                 "Learn by", "building real things",
                 "Step-by-step video tutorials and courses. Start free, upgrade when you want the full path."));
-        onboardingPageList.add(new OnboardingPage(R.drawable.img_project_booknest,
+        onboardingPageList.add(new OnboardingPage(R.drawable.img_entry_three,
                 "Hire, sign &", "pay in one place",
                 "Request a project, review the proposal, sign the contract and pay securely, all from your phone. No account needed."));
         view.setAdapter(new OnboardingPageAdapter(onboardingPageList));
