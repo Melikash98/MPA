@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,9 +33,10 @@ import com.melikash98.mpa.Class.SignatureImageView;
 public class SplashActivity extends AppCompatActivity {
     private View[] dots;
     private ImageView[] star;
-    private ImageView logoImg, textImg;
-    private Animation fade;
-    private SignatureImageView texts;
+    private ImageView logoImg;
+    private Animation fade, appear, shine, fup;
+    private SignatureImageView textImg;
+    private TextView[] text;
     private final Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
@@ -49,6 +51,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 startStarsAnimation();
+                textImg.setVisibility(View.VISIBLE);
+                textImg.startWritingAnimation();
+                startTextAnimation();
             }
 
             @Override
@@ -63,6 +68,40 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void startTextAnimation() {
+        for (int i = 0; i < text.length; i++){
+            final TextView view = text[i];
+            view.setVisibility(View.VISIBLE);
+            handler.postDelayed(() -> {
+
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+
+                view.setVisibility(View.VISIBLE);
+
+                fup.setAnimationListener(new Animation.AnimationListener() {
+
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                    }
+                });
+
+                view.startAnimation(fup);
+
+            }, i * 250L);
+        }
     }
 
     private void startStarsAnimation() {
@@ -83,12 +122,6 @@ public class SplashActivity extends AppCompatActivity {
 
                 stars.setVisibility(View.VISIBLE);
 
-
-                Animation appear = AnimationUtils.loadAnimation(
-                        SplashActivity.this,
-                        R.anim.star_appear
-                );
-
                 appear.setAnimationListener(new Animation.AnimationListener() {
 
                     @Override
@@ -103,15 +136,8 @@ public class SplashActivity extends AppCompatActivity {
                         }
 
 
-                        Animation shine = AnimationUtils.loadAnimation(
-                                SplashActivity.this,
-                                R.anim.star_shine
-                        );
-
                         stars.startAnimation(shine);
 
-                        textImg.setVisibility(View.VISIBLE);
-                        texts.startWritingAnimation();
                     }
 
                     @Override
@@ -128,6 +154,10 @@ public class SplashActivity extends AppCompatActivity {
     private void findID() {
         logoImg = findViewById(R.id.logoImg);
         textImg = findViewById(R.id.logoText);
+        text = new TextView[]{
+                findViewById(R.id.text_one),
+                findViewById(R.id.text_two)
+        };
         star = new ImageView[]{
                 findViewById(R.id.star_one),
                 findViewById(R.id.star_two),
@@ -140,10 +170,16 @@ public class SplashActivity extends AppCompatActivity {
         for (ImageView star : star) {
             star.setVisibility(View.INVISIBLE);
         }
-
+        for (TextView texts : text) {
+            texts.setVisibility(View.INVISIBLE);
+        }
+        textImg.setVisibility(View.INVISIBLE);
 
         //Animations
         fade = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        fup = AnimationUtils.loadAnimation(this, R.anim.fade_up);
+        appear = AnimationUtils.loadAnimation(this, R.anim.star_appear);
+        shine = AnimationUtils.loadAnimation(this, R.anim.star_shine);
     }
 
     @Override
