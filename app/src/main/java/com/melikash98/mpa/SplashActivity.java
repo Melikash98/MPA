@@ -8,6 +8,7 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,6 +32,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.melikash98.mpa.Class.SignatureImageView;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private static final long SPLASH_DURATION_MS = 2 * 60 * 1000L;
+    private static final long DOT_STEP_MS = 450L;
     private View[] dots;
     private long dotsStartTime;
     private int currentDot = 0;
@@ -41,7 +45,24 @@ public class SplashActivity extends AppCompatActivity {
     private SignatureImageView textImg;
     private TextView[] text;
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable dotsRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (isFinishing() || isDestroyed() || navigationStarted) return;
 
+            for (int i = 0; i < dots.length; i++) {
+                boolean active = (i == currentDot);
+                dots[i].setSelected(active);
+                dots[i].animate()
+                        .scaleX(active ? 2.2f : 1f)
+                        .setDuration(300)
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .start();
+            }
+            currentDot = (currentDot + 1) % dots.length;
+            handler.postDelayed(this, DOT_STEP_MS);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,68 +92,37 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         });
-
+        startDotsAnimation();
+        handler.postDelayed(this::goToEntry, SPLASH_DURATION_MS);
     }
 
     private void startDotsAnimation() {
-
-        dotsStartTime = android.os.SystemClock.uptimeMillis();
-
         currentDot = 0;
+        handler.post(dotsRunnable);
+    }
 
-        updateDots();
+    private void goToEntry() {
+        if (isFinishing() || isDestroyed() || navigationStarted) return;
+        navigationStarted = true;
 
-        handler.postDelayed(() -> {
+        handler.removeCallbacks(dotsRunnable);
 
-            if (isFinishing() || isDestroyed() || navigationStarted) {
-                return;
-            }
+        startActivity(new Intent(this, EntryActivity.class));
 
-            navigationStarted = true;
-
-            for (View dot : dots) {
-                dot.setSelected(false);
-            }
-
-            Intent intent = new Intent(
-                    SplashActivity.this,
-                    EntryActivity.class
-            );
-
-            startActivity(intent);
-
+        if (Build.VERSION.SDK_INT >= 34) {
+            overrideActivityTransition(
+                    OVERRIDE_TRANSITION_OPEN,
+                    R.anim.activity_enter_from_bottom,
+                    R.anim.activity_exit_fade);
+        } else {
             overridePendingTransition(
                     R.anim.activity_enter_from_bottom,
-                    R.anim.activity_exit_fade
-            );
+                    R.anim.activity_exit_fade);
+        }
 
-            // Remove SplashActivity from back stack
-            finish();
-
-        }, 7000L);
+        finish();
     }
 
-    private void updateDots() {
-
-        if (isFinishing() || isDestroyed()) {
-            return;
-        }
-
-        long elapsed = android.os.SystemClock.uptimeMillis()
-                - dotsStartTime;
-
-        if (elapsed >= 7000L) {
-            return;
-        }
-
-        for (int i = 0; i < dots.length; i++) {
-            dots[i].setSelected(i == currentDot);
-        }
-
-        currentDot = (currentDot + 1) % dots.length;
-
-        handler.postDelayed(this::updateDots, 450L);
-    }
     private void startTextAnimation() {
         animateText(0);
     }

@@ -179,13 +179,11 @@
         app:layout_constraintBottom_toTopOf="@id/text_splash_end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <View
             android:id="@+id/dot1"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:background="@drawable/dot"
-            android:backgroundTint="@color/gold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -196,7 +194,6 @@
             android:layout_height="10dp"
             android:layout_marginStart="12dp"
             android:background="@drawable/dot"
-            android:backgroundTint="#2A3350"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/dot1"
             app:layout_constraintTop_toTopOf="parent" />
@@ -207,7 +204,6 @@
             android:layout_height="10dp"
             android:layout_marginStart="12dp"
             android:background="@drawable/dot"
-            android:backgroundTint="#2A3350"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/dot2"
