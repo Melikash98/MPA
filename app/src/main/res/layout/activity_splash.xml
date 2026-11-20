@@ -34,7 +34,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintEnd_toStartOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:id="@+id/star_foure"
@@ -46,7 +47,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintEnd_toStartOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:id="@+id/star_two"
@@ -58,7 +60,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:id="@+id/star_three"
@@ -70,7 +73,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:id="@+id/star_five"
@@ -83,7 +87,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:id="@+id/star_sex"
@@ -95,7 +100,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:id="@+id/star_seven"
@@ -107,7 +113,8 @@
             android:src="@drawable/ic_sparkles"
             android:tint="@color/gold"
             app:layout_constraintStart_toEndOf="@id/logoImg"
-            app:layout_constraintTop_toTopOf="@id/logoImg" />
+            app:layout_constraintTop_toTopOf="@id/logoImg"
+            tools:ignore="UseAppTint" />
 
         <ImageView
             android:visibility="gone"

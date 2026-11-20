@@ -32,6 +32,9 @@ import com.melikash98.mpa.Class.SignatureImageView;
 
 public class SplashActivity extends AppCompatActivity {
     private View[] dots;
+    private long dotsStartTime;
+    private int currentDot = 0;
+    private boolean navigationStarted = false;
     private ImageView[] star;
     private ImageView logoImg;
     private Animation fade;
@@ -45,6 +48,7 @@ public class SplashActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
         findID();
+        startDotsAnimation();
         logoImg.setVisibility(View.VISIBLE);
         logoImg.startAnimation(fade);
         fade.setAnimationListener(new Animation.AnimationListener() {
@@ -70,6 +74,65 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+    private void startDotsAnimation() {
+
+        dotsStartTime = android.os.SystemClock.uptimeMillis();
+
+        currentDot = 0;
+
+        updateDots();
+
+        handler.postDelayed(() -> {
+
+            if (isFinishing() || isDestroyed() || navigationStarted) {
+                return;
+            }
+
+            navigationStarted = true;
+
+            for (View dot : dots) {
+                dot.setSelected(false);
+            }
+
+            Intent intent = new Intent(
+                    SplashActivity.this,
+                    EntryActivity.class
+            );
+
+            startActivity(intent);
+
+            overridePendingTransition(
+                    R.anim.activity_enter_from_bottom,
+                    R.anim.activity_exit_fade
+            );
+
+            // Remove SplashActivity from back stack
+            finish();
+
+        }, 7000L);
+    }
+
+    private void updateDots() {
+
+        if (isFinishing() || isDestroyed()) {
+            return;
+        }
+
+        long elapsed = android.os.SystemClock.uptimeMillis()
+                - dotsStartTime;
+
+        if (elapsed >= 7000L) {
+            return;
+        }
+
+        for (int i = 0; i < dots.length; i++) {
+            dots[i].setSelected(i == currentDot);
+        }
+
+        currentDot = (currentDot + 1) % dots.length;
+
+        handler.postDelayed(this::updateDots, 450L);
+    }
     private void startTextAnimation() {
         animateText(0);
     }
@@ -113,6 +176,7 @@ public class SplashActivity extends AppCompatActivity {
 
         currentText.startAnimation(textAnimation);
     }
+
     private void startStarsAnimation() {
 
         for (int i = 0; i < star.length; i++) {
@@ -167,6 +231,15 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void findID() {
+        dots = new View[]{
+                findViewById(R.id.dot1),
+                findViewById(R.id.dot2),
+                findViewById(R.id.dot3)
+        };
+
+        for (View dot : dots) {
+            dot.setSelected(false);
+        }
         logoImg = findViewById(R.id.logoImg);
         textImg = findViewById(R.id.logoText);
         text = new TextView[]{
