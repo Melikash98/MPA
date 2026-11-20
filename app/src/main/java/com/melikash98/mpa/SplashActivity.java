@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
     private View[] dots;
     private ImageView[] star;
     private ImageView logoImg;
-    private Animation fade, appear, shine, fup;
+    private Animation fade;
     private SignatureImageView textImg;
     private TextView[] text;
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -71,18 +71,26 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startTextAnimation() {
-        for (int i = 0; i < text.length; i++){
-            final TextView view = text[i];
-            view.setVisibility(View.VISIBLE);
-            handler.postDelayed(() -> {
+        animateText(0);
+    }
 
-                if (isFinishing() || isDestroyed()) {
-                    return;
-                }
+    private void animateText(int index) {
 
-                view.setVisibility(View.VISIBLE);
+        if (index >= text.length) {
+            return;
+        }
 
-                fup.setAnimationListener(new Animation.AnimationListener() {
+        TextView currentText = text[index];
+
+        currentText.setVisibility(View.VISIBLE);
+
+        Animation textAnimation = AnimationUtils.loadAnimation(
+                SplashActivity.this,
+                R.anim.fade_up
+        );
+
+        textAnimation.setAnimationListener(
+                new Animation.AnimationListener() {
 
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -91,6 +99,11 @@ public class SplashActivity extends AppCompatActivity {
                     @Override
                     public void onAnimationEnd(Animation animation) {
 
+                        if (isFinishing() || isDestroyed()) {
+                            return;
+                        }
+
+                        animateText(index + 1);
                     }
 
                     @Override
@@ -98,12 +111,8 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
 
-                view.startAnimation(fup);
-
-            }, i * 250L);
-        }
+        currentText.startAnimation(textAnimation);
     }
-
     private void startStarsAnimation() {
 
         for (int i = 0; i < star.length; i++) {
@@ -121,7 +130,10 @@ public class SplashActivity extends AppCompatActivity {
                 }
 
                 stars.setVisibility(View.VISIBLE);
-
+                Animation appear = AnimationUtils.loadAnimation(
+                        SplashActivity.this,
+                        R.anim.star_appear
+                );
                 appear.setAnimationListener(new Animation.AnimationListener() {
 
                     @Override
@@ -134,7 +146,10 @@ public class SplashActivity extends AppCompatActivity {
                         if (isFinishing() || isDestroyed()) {
                             return;
                         }
-
+                        Animation shine = AnimationUtils.loadAnimation(
+                                SplashActivity.this,
+                                R.anim.star_shine
+                        );
 
                         stars.startAnimation(shine);
 
@@ -170,16 +185,13 @@ public class SplashActivity extends AppCompatActivity {
         for (ImageView star : star) {
             star.setVisibility(View.INVISIBLE);
         }
-        for (TextView texts : text) {
-            texts.setVisibility(View.INVISIBLE);
+        for (TextView currentText : text) {
+            currentText.setVisibility(View.INVISIBLE);
         }
         textImg.setVisibility(View.INVISIBLE);
 
         //Animations
         fade = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        fup = AnimationUtils.loadAnimation(this, R.anim.fade_up);
-        appear = AnimationUtils.loadAnimation(this, R.anim.star_appear);
-        shine = AnimationUtils.loadAnimation(this, R.anim.star_shine);
     }
 
     @Override
