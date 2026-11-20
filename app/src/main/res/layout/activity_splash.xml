@@ -110,6 +110,7 @@
             app:layout_constraintTop_toTopOf="@id/logoImg" />
 
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/logoImg"
             android:layout_width="550dp"
             android:layout_height="550dp"
@@ -122,6 +123,7 @@
         <ImageView
             android:id="@+id/logoText"
             android:layout_width="300dp"
+            android:visibility="invisible"
             android:layout_height="200dp"
             android:layout_marginTop="-220dp"
             android:src="@drawable/logo_signature"

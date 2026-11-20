@@ -1,6 +1,7 @@
 package com.melikash98.mpa;
 
 import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -26,52 +27,33 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class SplashActivity extends AppCompatActivity {
-    private final Handler handler = new Handler(Looper.getMainLooper());
     private View[] dots;
-    private ColorStateList activeColor;
-    private ColorStateList inactiveColor;
-    private int current = 0;
-    private int ticks = 0;
-    private static final int STEP_DELAY = 900;
-    private static final int TOTAL_TICKS = 10;
-
-    private final Runnable loader = new Runnable() {
-        @Override
-        public void run() {
-            for (int i = 0; i < dots.length; i++) {
-                dots[i].setBackgroundTintList(i == current ? activeColor : inactiveColor);
-            }
-            current = (current + 1) % dots.length;
-            ticks++;
-
-            if (ticks >= TOTAL_TICKS) {
-                startActivity(new Intent(SplashActivity.this, EntryActivity.class));
-                finish();
-            } else {
-                handler.postDelayed(this, STEP_DELAY);
-            }
-        }
-    };
+    private ImageView logoImg, textImg;
+    private Animator fade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
-        dots = new View[]{
-                findViewById(R.id.dot1),
-                findViewById(R.id.dot2),
-                findViewById(R.id.dot3)
-        };
-        activeColor = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.gold));
-        inactiveColor = ColorStateList.valueOf(0xFF2A3350);
+        findID();
+        setAnimation();
 
-        handler.post(loader);
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        handler.removeCallbacks(loader);
+
+    private void setAnimation() {
+        logoImg.setAlpha(0f);
+        fade = AnimatorInflater.loadAnimator(this, R.animator.fade_in);
+        fade.setTarget(logoImg);
+        fade.setStartDelay(300);
+        fade.start();
+
     }
+
+    private void findID() {
+        logoImg = findViewById(R.id.logoImg);
+        textImg = findViewById(R.id.logoText);
+    }
+
 
 }
