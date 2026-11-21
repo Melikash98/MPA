@@ -179,6 +179,7 @@
         app:layout_constraintBottom_toTopOf="@id/text_splash_end"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <View
             android:id="@+id/dot1"
             android:layout_width="10dp"

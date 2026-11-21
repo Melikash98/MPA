@@ -3,6 +3,7 @@ package com.melikash98.mpa;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
@@ -24,21 +25,32 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Lifecycle;
 
 import com.melikash98.mpa.Class.SignatureImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long SPLASH_DURATION_MS = 2 * 60 * 1000L;
-    private static final long DOT_STEP_MS = 450L;
+    private static final long LOADING_DURATION_MS = 8 * 1000L;
+    private static final long DOT_STEP_MS = 1000L;
+    private static final long DOT_FADE_MS = 700L;
+
+    private ValueAnimator[] dotAnimators;
+    private int[] dotColors;
+    private int activeColor;
+    private int inactiveColor;
+
     private View[] dots;
-    private long dotsStartTime;
     private int currentDot = 0;
+
     private boolean navigationStarted = false;
+    private boolean loadingFinished = false;
+
     private ImageView[] star;
     private ImageView logoImg;
     private Animation fade;
@@ -50,26 +62,26 @@ public class SplashActivity extends AppCompatActivity {
         public void run() {
             if (isFinishing() || isDestroyed() || navigationStarted) return;
 
-            for (int i = 0; i < dots.length; i++) {
-                boolean active = (i == currentDot);
-                dots[i].setSelected(active);
-                dots[i].animate()
-                        .scaleX(active ? 2.2f : 1f)
-                        .setDuration(300)
-                        .setInterpolator(new AccelerateDecelerateInterpolator())
-                        .start();
-            }
             currentDot = (currentDot + 1) % dots.length;
+            selectDot(currentDot);
+
             handler.postDelayed(this, DOT_STEP_MS);
         }
     };
+
+    private final Runnable finishLoadingRunnable = () -> {
+        loadingFinished = true;
+        goToIntro();
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
         findID();
-        startDotsAnimation();
+        selectDot(0);
+        handler.postDelayed(dotsRunnable, DOT_STEP_MS);
         logoImg.setVisibility(View.VISIBLE);
         logoImg.startAnimation(fade);
         fade.setAnimationListener(new Animation.AnimationListener() {
@@ -92,37 +104,58 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         });
-        startDotsAnimation();
-        handler.postDelayed(this::goToEntry, SPLASH_DURATION_MS);
+        handler.postDelayed(finishLoadingRunnable, LOADING_DURATION_MS);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (loadingFinished) {
+            goToIntro();
+        }
     }
 
-    private void startDotsAnimation() {
-        currentDot = 0;
-        handler.post(dotsRunnable);
-    }
-
-    private void goToEntry() {
-        if (isFinishing() || isDestroyed() || navigationStarted) return;
-        navigationStarted = true;
-
-        handler.removeCallbacks(dotsRunnable);
-
-        startActivity(new Intent(this, EntryActivity.class));
-
-        if (Build.VERSION.SDK_INT >= 34) {
-            overrideActivityTransition(
-                    OVERRIDE_TRANSITION_OPEN,
-                    R.anim.activity_enter_from_bottom,
-                    R.anim.activity_exit_fade);
-        } else {
-            overridePendingTransition(
-                    R.anim.activity_enter_from_bottom,
-                    R.anim.activity_exit_fade);
+    private void goToIntro() {
+        if (navigationStarted || isFinishing() || isDestroyed()) return;
+        if (!getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
+            return;
         }
 
+        navigationStarted = true;
+        handler.removeCallbacksAndMessages(null);
+
+        Intent intent = new Intent(this, EntryActivity.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(
+                this,
+                R.anim.activity_enter_from_bottom,
+                R.anim.activity_exit_fade
+        );
+        startActivity(intent, options.toBundle());
         finish();
     }
 
+    private void selectDot(int index) {
+        for (int i = 0; i < dots.length; i++) {
+            animateDotColor(i, i == index ? activeColor : inactiveColor);
+        }
+    }
+
+    private void animateDotColor(int i, int toColor) {
+        final View dot = dots[i];
+        int fromColor = dotColors[i];
+        if (fromColor == toColor) return;
+
+        if (dotAnimators[i] != null) dotAnimators[i].cancel();
+
+        ValueAnimator animator = ValueAnimator.ofObject(new ArgbEvaluator(), fromColor, toColor);
+        animator.setDuration(DOT_FADE_MS);
+        animator.addUpdateListener(a -> {
+            int color = (int) a.getAnimatedValue();
+            dotColors[i] = color;
+            dot.setBackgroundTintList(ColorStateList.valueOf(color));
+        });
+        dotAnimators[i] = animator;
+        animator.start();
+    }
     private void startTextAnimation() {
         animateText(0);
     }
@@ -226,9 +259,13 @@ public class SplashActivity extends AppCompatActivity {
                 findViewById(R.id.dot2),
                 findViewById(R.id.dot3)
         };
-
-        for (View dot : dots) {
-            dot.setSelected(false);
+        activeColor = ContextCompat.getColor(this, R.color.gold);
+        inactiveColor = 0xFF2A3350;
+        dotAnimators = new ValueAnimator[dots.length];
+        dotColors = new int[dots.length];
+        for (int i = 0; i < dots.length; i++) {
+            dotColors[i] = inactiveColor;
+            dots[i].setBackgroundTintList(ColorStateList.valueOf(inactiveColor));
         }
         logoImg = findViewById(R.id.logoImg);
         textImg = findViewById(R.id.logoText);
@@ -270,6 +307,11 @@ public class SplashActivity extends AppCompatActivity {
 
         if (logoImg != null) {
             logoImg.clearAnimation();
+        }
+        if (dotAnimators != null) {
+            for (ValueAnimator a : dotAnimators) {
+                if (a != null) a.cancel();
+            }
         }
 
         super.onDestroy();

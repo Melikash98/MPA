@@ -4,8 +4,7 @@
     android:exitFadeDuration="300">
 
     <item android:state_selected="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="4dp" />
+        <shape android:shape="oval">
             <gradient
                 android:angle="0"
                 android:startColor="@color/gold_dark"
