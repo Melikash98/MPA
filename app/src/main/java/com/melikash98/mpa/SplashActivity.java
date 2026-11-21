@@ -36,7 +36,7 @@ import com.melikash98.mpa.Class.SignatureImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long LOADING_DURATION_MS = 8 * 1000L;
+    private static final long LOADING_DURATION_MS = 9 * 1000L;
     private static final long DOT_STEP_MS = 1000L;
     private static final long DOT_FADE_MS = 700L;
 
