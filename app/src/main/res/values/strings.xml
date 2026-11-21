@@ -15,4 +15,5 @@
     <string name="years">Years</string>
     <string name="projects_status">Projects</string>
     <string name="move_status">Courses</string>
+    <string name="comments">Comments</string>
 </resources>
