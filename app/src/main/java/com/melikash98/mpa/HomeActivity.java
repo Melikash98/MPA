@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class HomeActivity extends AppCompatActivity {
     private TextView goldText;
-    private AppCompatButton hireBtn;
+    private AppCompatButton hireBtn, projectBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,20 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+        projectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ProjectsLibActivity.class));
+                finish();
+            }
+        });
+
 
     }
 
 
     private void findID() {
         hireBtn = findViewById(R.id.hire_btn);
+        projectBtn = findViewById(R.id.work_btn);
     }
 }
