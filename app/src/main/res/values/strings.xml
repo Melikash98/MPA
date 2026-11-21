@@ -6,4 +6,10 @@
     <string name="text_splash">BUILD . LEARN . GROW</string>
     <string name="text_splash_two">Software Engineer And Creator</string>
     <string name="web_address">mshooryabi.com</string>
+    <string name="text_banner_sub">Available for projects</string>
+    <string name="text_banner_title_one">Turning ideas into</string>
+    <string name="text_banner_title_two">elegant software</string>
+    <string name="des_banner_text">OMobile apps, backend systems and clean design, built with care.</string>
+    <string name="hire_me">Hire me</string>
+    <string name="go_work">View work</string>
 </resources>
