@@ -7,5 +7,53 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
     android:background="@color/ic_launcher_background">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="30dp">
+        <ImageView
+            android:id="@+id/textLogoHome"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_signature_small"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="10dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textLogoHome"
+            app:layout_constraintBottom_toBottomOf="@id/textLogoHome"
+            android:orientation="horizontal"
+            android:layout_marginEnd="10dp">
+
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/search"
+                android:backgroundTint="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/notif_bell"
+                android:layout_marginEnd="20dp"/>
+            <ImageView
+                android:id="@+id/notif_bell"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bell"
+                android:backgroundTint="@color/gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/notif_bell"
+                app:layout_constraintBottom_toBottomOf="@id/notif_bell"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
