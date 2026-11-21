@@ -13,4 +13,6 @@
     <string name="hire_me">Hire me</string>
     <string name="go_work">View work</string>
     <string name="years">Years</string>
+    <string name="projects_status">Projects</string>
+    <string name="move_status">Courses</string>
 </resources>
