@@ -24,7 +24,7 @@
     <color name="teal_light">#5BE3C8</color>
     <color name="teal_dark">#1FA88F</color>
     <color name="ic_launcher_background">#080B14</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#e0f0fe</color>
     <color name="black">#000000</color>
 
     // banner Back Color
@@ -35,4 +35,11 @@
     <color name="green_dot">#2ED8A3</color>
     <color name="badge_bg">#12342F</color>
     <color name="outline_blue">#3B82F6</color>
+
+
+    <!-- Icon Circle Background Colors -->
+    <color name="gold_circle">#49391F</color>
+    <color name="teal_circle">#123F3C</color>
+    <color name="purple_circle">#342746</color>
+    <color name="blue_circle">#183552</color>
 </resources>

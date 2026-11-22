@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="85dp"
+    android:layout_height="85dp"
+    android:id="@+id/cadr_list"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_margin="20dp"
+    android:padding="10dp"
+    android:background="@drawable/bg_status">
+    <ImageView
+        android:id="@+id/bg_icon_nav_card"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_nav_card_list"/>
+    <ImageView
+        android:id="@+id/icon_nav_card"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintStart_toStartOf="@id/bg_icon_nav_card"
+        app:layout_constraintEnd_toEndOf="@id/bg_icon_nav_card"
+        app:layout_constraintTop_toTopOf="@id/bg_icon_nav_card"
+        app:layout_constraintBottom_toBottomOf="@id/bg_icon_nav_card"
+        android:tint="@color/gold_deep"
+        android:src="@drawable/work"/>
+    <TextView
+        android:id="@+id/name_nav_list_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hire_me"
+        app:layout_constraintStart_toStartOf="@id/bg_icon_nav_card"
+        app:layout_constraintEnd_toEndOf="@id/bg_icon_nav_card"
+        app:layout_constraintTop_toBottomOf="@id/bg_icon_nav_card"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/nav_font"
+        android:textFontWeight="600" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
