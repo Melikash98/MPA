@@ -23,4 +23,7 @@
     <string name="new_project">New Projects</string>
     <string name="new_courses">New Courses</string>
     <string name="see">See All</string>
+    <string name="name_project">Hod Hod</string>
+    <string name="des_project_item">Each code product has three licences. </string>
+    <string name="app">Application</string>
 </resources>

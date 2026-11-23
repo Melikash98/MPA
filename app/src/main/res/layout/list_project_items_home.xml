@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/bg_status"
+    android:padding="10dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imgCardProject"
+        android:layout_width="150dp"
+        android:layout_height="90dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="@color/bg_color"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_project_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/p1" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_status">
+
+            <TextView
+                android:id="@+id/category_name_item_project_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/tittle_font"
+                android:text="@string/app"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textDirection="ltr"
+                android:textFontWeight="700"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/name_project_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/tittle_font"
+        android:text="@string/name_project"
+        android:textColor="@color/white"
+        android:textFontWeight="500"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/imgCardProject"
+        app:layout_constraintTop_toBottomOf="@id/imgCardProject" />
+
+    <TextView
+        android:id="@+id/des_item_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/body_entry_font"
+        android:maxLength="25"
+        android:text="@string/des_project_item"
+        android:textColor="@color/gray"
+        android:textDirection="ltr"
+        android:textFontWeight="500"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/name_project_item"
+        app:layout_constraintTop_toBottomOf="@id/name_project_item" />
+
+    <View
+        android:id="@+id/line_project_item"
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.4"
+        android:background="@drawable/bg_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/des_item_project" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/section_one_project_items"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_project_item"
+        android:padding="5dp"
+        android:layout_marginTop="5dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:id="@+id/moneyLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/dollar_one"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/dollar"
+                android:tint="@color/gold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/money_one"
+                app:layout_constraintBottom_toBottomOf="@id/money_one"
+                app:layout_constraintEnd_toStartOf="@id/money_one"
+                android:layout_marginEnd="2dp"
+                tools:ignore="UseAppTint" />
+            <TextView
+                android:id="@+id/money_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="89"
+                android:textSize="16sp"
+                android:textColor="@color/gold"
+                android:fontFamily="@font/body_entry_font"
+                android:textFontWeight="800"
+                app:layout_constraintStart_toEndOf="@id/dollar_one" />
+            <View
+                android:id="@+id/line_beetwen_money"
+                android:layout_width="10dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_line"
+                android:backgroundTint="@color/gold"
+                app:layout_constraintStart_toEndOf="@id/money_one"
+                app:layout_constraintEnd_toStartOf="@id/dollar_two"
+                app:layout_constraintTop_toTopOf="@id/money_one"
+                app:layout_constraintBottom_toBottomOf="@id/money_one"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"/>
+            <ImageView
+                android:id="@+id/dollar_two"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/dollar"
+                android:tint="@color/gold"
+                app:layout_constraintStart_toEndOf="@id/line_beetwen_money"
+                app:layout_constraintTop_toTopOf="@id/money_one"
+                app:layout_constraintBottom_toBottomOf="@id/money_one"
+                android:layout_marginEnd="2dp"
+                tools:ignore="UseAppTint" />
+            <TextView
+                android:id="@+id/money_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="89"
+                android:textSize="16sp"
+                android:textColor="@color/gold"
+                android:fontFamily="@font/body_entry_font"
+                android:textFontWeight="800"
+                app:layout_constraintStart_toEndOf="@id/dollar_two"
+                app:layout_constraintTop_toTopOf="@id/money_one"
+                app:layout_constraintBottom_toBottomOf="@id/money_one"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
