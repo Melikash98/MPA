@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- حالت فشرده شده -->
     <item android:state_pressed="true">
         <layer-list>
             <item>
@@ -12,19 +11,15 @@
             </item>
             <item>
                 <shape android:shape="rectangle">
-                    <stroke
-                        android:width="1dp"
-                        android:color="#33FFFFFF" />
+                    <stroke android:width="1dp" android:color="#33FFFFFF" />
                     <corners android:radius="20dp" />
                 </shape>
             </item>
         </layer-list>
     </item>
 
-    <!-- حالت عادی -->
     <item>
         <layer-list>
-            <!-- بدنه اصلی با رنگ #0b1020 -->
             <item>
                 <shape android:shape="rectangle">
                     <solid android:color="#D90B1020" />
@@ -32,23 +27,16 @@
                 </shape>
             </item>
 
-            <!-- هایلایت خیلی ملایم از بالا -->
             <item>
                 <shape android:shape="rectangle">
-                    <gradient
-                        android:angle="270"
-                        android:startColor="#0DFFFFFF"
-                        android:endColor="#00FFFFFF" />
+                    <gradient android:angle="270" android:endColor="#00FFFFFF" android:startColor="#0DFFFFFF" />
                     <corners android:radius="20dp" />
                 </shape>
             </item>
 
-            <!-- حاشیه ظریف -->
             <item>
                 <shape android:shape="rectangle">
-                    <stroke
-                        android:width="1dp"
-                        android:color="#1FFFFFFF" />
+                    <stroke android:width="1dp" android:color="#1FFFFFFF" />
                     <corners android:radius="20dp" />
                 </shape>
             </item>
