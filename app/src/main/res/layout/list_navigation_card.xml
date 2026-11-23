@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="85dp"
-    android:layout_height="85dp"
+    android:layout_width="95dp"
+    android:layout_height="95dp"
     android:id="@+id/cadr_list"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintStart_toStartOf="parent"
@@ -11,15 +11,15 @@
     android:background="@drawable/bg_status">
     <ImageView
         android:id="@+id/bg_icon_nav_card"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/bg_nav_card_list"/>
     <ImageView
         android:id="@+id/icon_nav_card"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         app:layout_constraintStart_toStartOf="@id/bg_icon_nav_card"
         app:layout_constraintEnd_toEndOf="@id/bg_icon_nav_card"
         app:layout_constraintTop_toTopOf="@id/bg_icon_nav_card"
@@ -35,7 +35,8 @@
         app:layout_constraintEnd_toEndOf="@id/bg_icon_nav_card"
         app:layout_constraintTop_toBottomOf="@id/bg_icon_nav_card"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:layout_marginTop="7dp"
         android:fontFamily="@font/nav_font"
         android:textFontWeight="600" />
 

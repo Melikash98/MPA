@@ -11,6 +11,8 @@
     <string name="text_banner_title_two">elegant software</string>
     <string name="des_banner_text">OMobile apps, backend systems and clean design, built with care.</string>
     <string name="hire_me">Hire me</string>
+    <string name="project">Project</string>
+    <string name="service">Services</string>
     <string name="go_work">View work</string>
     <string name="years">Years</string>
     <string name="projects_status">Projects</string>

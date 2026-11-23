@@ -46,42 +46,37 @@ public class NavigationCardAdapter extends RecyclerView.Adapter<NavigationCardAd
     public void onBindViewHolder(@NonNull NavigationCardAdapter.ViewHolder holder, int position) {
         NavigationCardModel cardModel = model.get(position);
         holder.name.setText(cardModel.getName());
-        int imageRes = context.getResources().getIdentifier(cardModel.getImg(),"drawable",context.getPackageName());
-        if (imageRes != 0) {
-            holder.icon.setImageResource(imageRes);
-        } else {
-            holder.icon.setImageDrawable(null);
-        }
-        int iconColorRes = context.getResources().getIdentifier(cardModel.getImgColor(),"color",context.getPackageName());
-        if (iconColorRes != 0) {
-            int iconColor = ContextCompat.getColor( context,iconColorRes);
-            ImageViewCompat.setImageTintList(holder.icon,ColorStateList.valueOf(iconColor));
-        } else {
-            ImageViewCompat.setImageTintList(holder.icon, null);
-        }
-        int bgColorRes = context.getResources().getIdentifier(cardModel.getImgColor(),"color",context.getPackageName() );
-        if (bgColorRes != 0) {
+        holder.icon.setImageResource(cardModel.getImg());
 
-            int bgColor = ContextCompat.getColor(context, bgColorRes);
-            ViewCompat.setBackgroundTintList(holder.bgIcon,ColorStateList.valueOf(bgColor));
+        int iconColor = ContextCompat.getColor(
+                context,
+                cardModel.getImgColor()
+        );
 
-        } else {
+        ImageViewCompat.setImageTintList(
+                holder.icon,
+                ColorStateList.valueOf(iconColor)
+        );
+        int bgColor = ContextCompat.getColor(
+                context,
+                cardModel.getImgBgColor()
+        );
 
-            ViewCompat.setBackgroundTintList(holder.bgIcon,null);
-        }
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentPosition = holder.getBindingAdapterPosition();
+        ViewCompat.setBackgroundTintList(
+                holder.bgIcon,
+                ColorStateList.valueOf(bgColor)
+        );
+        holder.layout.setOnClickListener(v -> {
 
-                if (currentPosition != RecyclerView.NO_POSITION
-                        && listener != null) {
+            int currentPosition = holder.getBindingAdapterPosition();
 
-                    NavigationCardModel selectedCard =
-                            model.get(currentPosition);
+            if (currentPosition != RecyclerView.NO_POSITION
+                    && listener != null) {
 
-                    listener.onNavigationClick(selectedCard.getId());
-                }
+                NavigationCardModel selectedCard =
+                        model.get(currentPosition);
+
+                listener.onNavigationClick(selectedCard.getId());
             }
         });
 

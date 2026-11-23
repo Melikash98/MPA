@@ -14,16 +14,27 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.melikash98.mpa.Adapter.NavigationCardAdapter;
+import com.melikash98.mpa.Model.NavigationCardModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private TextView goldText;
     private AppCompatButton hireBtn, projectBtn;
+    private RecyclerView navCard;
+    private List<NavigationCardModel> models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         findID();
+        setupNavigationRecycler();
         hireBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,9 +53,39 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    private void setupNavigationRecycler() {
+        navCard.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        models = new ArrayList<>();
+        models.add(new NavigationCardModel("hire_me", R.string.hire_me, R.drawable.work, R.color.gold, R.color.gold_circle));
+        models.add(new NavigationCardModel("project", R.string.project, R.drawable.project_icon, R.color.teal_700, R.color.teal_circle));
+        models.add(new NavigationCardModel("project", R.string.project, R.drawable.service_icon, R.color.purple_700, R.color.purple_circle));
+        navCard.setAdapter(new NavigationCardAdapter(this::openNavigationPage, models, this));
+    }
+
+    private void openNavigationPage(String id) {
+
+        Intent intent;
+
+        switch (id) {
+
+            case "hire_me":
+                intent = new Intent(this, HireMeActivity.class);
+                break;
+
+            case "projects":
+                intent = new Intent(this, ProjectsLibActivity.class);
+                break;
+
+            default:
+                return;
+        }
+
+        startActivity(intent);
+    }
 
     private void findID() {
         hireBtn = findViewById(R.id.hire_btn);
         projectBtn = findViewById(R.id.work_btn);
+        navCard = findViewById(R.id.navigation_card_rec);
     }
 }
