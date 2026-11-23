@@ -13,6 +13,8 @@
     <string name="hire_me">Hire me</string>
     <string name="project">Project</string>
     <string name="service">Services</string>
+    <string name="skill">Skills</string>
+    <string name="courses">Courses</string>
     <string name="go_work">View work</string>
     <string name="years">Years</string>
     <string name="projects_status">Projects</string>
