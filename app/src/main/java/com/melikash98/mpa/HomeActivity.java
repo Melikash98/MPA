@@ -24,9 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView goldText;
+    private TextView goldText, projectMBtn;
     private AppCompatButton hireBtn, projectBtn;
-    private RecyclerView navCard;
+    private RecyclerView navCard,projectRec;
     private List<NavigationCardModel> models;
 
     @Override
@@ -49,6 +49,13 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+        projectMBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ProjectsLibActivity.class));
+                finish();
+            }
+        });
 
 
     }
@@ -65,25 +72,24 @@ public class HomeActivity extends AppCompatActivity {
 
     private void openNavigationPage(String id) {
 
-
         Intent intent;
 
         switch (id) {
 
             case "hire_me":
-                intent = new Intent(HomeActivity.this, HireMeActivity.class);
+                intent = new Intent(this, HireMeActivity.class);
                 break;
 
             case "project":
-                intent = new Intent(HomeActivity.this, ProjectsLibActivity.class);
+                intent = new Intent(this, ProjectsLibActivity.class);
                 break;
 
             case "service":
-                intent = new Intent(HomeActivity.this, ServiceActivity.class);
-                break;
+                openServiceFragment();
+                return;
 
             case "courses":
-                intent = new Intent(HomeActivity.this, CoursesActivity.class);
+                intent = new Intent(this, CourseslIBActivity.class);
                 break;
 
             default:
@@ -93,9 +99,24 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void openServiceFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(
+                        android.R.id.content,
+                        new ServicesFragment(),
+                        "SERVICE_FRAGMENT"
+                )
+                .addToBackStack("service")
+                .commit();
+    }
+
     private void findID() {
         hireBtn = findViewById(R.id.hire_btn);
         projectBtn = findViewById(R.id.work_btn);
         navCard = findViewById(R.id.navigation_card_rec);
+        projectMBtn = findViewById(R.id.go_to_project_btn);
+        projectRec = findViewById(R.id.new_project_rec);
     }
 }

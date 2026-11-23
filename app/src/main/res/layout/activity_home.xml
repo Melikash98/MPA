@@ -367,17 +367,70 @@
             android:textFontWeight="700"
             android:textAllCaps="false"/>
         <TextView
+            android:id="@+id/go_to_project_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/see"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/project_tittle_home"
             app:layout_constraintBottom_toBottomOf="@id/project_tittle_home"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textColor="@color/red_medium"
-            android:fontFamily="@font/tittle_font"
+            android:fontFamily="@font/nav_font"
             android:textFontWeight="700"
             android:textAllCaps="false"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/new_project_rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/section_four"
+        android:layout_margin="10dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_project_rec"
+        android:layout_marginTop="10dp"
+        android:id="@+id/section_five"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_courses"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/course_tittle_home"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/tittle_font"
+            android:textFontWeight="700"
+            android:textAllCaps="false"/>
+        <TextView
+            android:id="@+id/go_to_course_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/course_tittle_home"
+            app:layout_constraintBottom_toBottomOf="@id/course_tittle_home"
+            android:textSize="16sp"
+            android:textColor="@color/red_medium"
+            android:fontFamily="@font/nav_font"
+            android:textFontWeight="700"
+            android:textAllCaps="false"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/new_course_rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/section_five"
+        android:layout_margin="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
