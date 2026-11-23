@@ -65,16 +65,25 @@ public class HomeActivity extends AppCompatActivity {
 
     private void openNavigationPage(String id) {
 
+
         Intent intent;
 
         switch (id) {
 
             case "hire_me":
-                intent = new Intent(this, HireMeActivity.class);
+                intent = new Intent(HomeActivity.this, HireMeActivity.class);
                 break;
 
-            case "projects":
-                intent = new Intent(this, ProjectsLibActivity.class);
+            case "project":
+                intent = new Intent(HomeActivity.this, ProjectsLibActivity.class);
+                break;
+
+            case "service":
+                intent = new Intent(HomeActivity.this, ServiceActivity.class);
+                break;
+
+            case "courses":
+                intent = new Intent(HomeActivity.this, CoursesActivity.class);
                 break;
 
             default:

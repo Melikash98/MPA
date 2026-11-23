@@ -26,6 +26,7 @@
     <color name="ic_launcher_background">#080B14</color>
     <color name="white">#e0f0fe</color>
     <color name="black">#000000</color>
+    <color name="red_medium">#871515</color>
 
     // banner Back Color
     <color name="bg_dark">#0B1020</color>

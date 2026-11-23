@@ -20,4 +20,7 @@
     <string name="projects_status">Projects</string>
     <string name="move_status">Courses</string>
     <string name="comments">Comments</string>
+    <string name="new_project">New Projects</string>
+    <string name="new_courses">New Courses</string>
+    <string name="see">See All</string>
 </resources>
