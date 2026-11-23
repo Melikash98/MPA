@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         navCard.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         models = new ArrayList<>();
         models.add(new NavigationCardModel("hire_me", R.string.hire_me, R.drawable.work, R.color.gold, R.color.gold_circle));
+        models.add(new NavigationCardModel("project", R.string.project, R.drawable.project_icon, R.color.green_dot, R.color.teal_circle));
         models.add(new NavigationCardModel("service", R.string.service, R.drawable.service_icon, R.color.purple_200, R.color.purple_circle));
         models.add(new NavigationCardModel("courses", R.string.courses, R.drawable.courses_icon, R.color.outline_blue, R.color.blue_circle));
         navCard.setAdapter(new NavigationCardAdapter(this::openNavigationPage, models, this));

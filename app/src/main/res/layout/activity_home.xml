@@ -65,13 +65,13 @@
         android:id="@+id/section_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/section_one">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/banner_layout"
-            android:layout_width="400dp"
+            android:layout_width="420dp"
             android:layout_height="250dp"
             android:background="@drawable/card_no_buttons"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/hire_btn"
-                android:layout_width="130dp"
+                android:layout_width="150dp"
                 android:layout_height="32dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -106,7 +106,7 @@
                 tools:ignore="UseAppTint" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/work_btn"
-                android:layout_width="130dp"
+                android:layout_width="150dp"
                 android:layout_height="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/hire_btn"
