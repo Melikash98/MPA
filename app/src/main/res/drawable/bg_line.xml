@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="900dp" />
-    <solid android:color="#99BFC9D1" />
+    <solid android:color="#BFC9D1" />
 </shape>
